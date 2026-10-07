@@ -5,13 +5,98 @@
     {
       "id": "push",
       "name": "PUSH",
-      "focus": "Brust · Schulter · Trizeps",
+      "focus": "Trizeps · Brust · Schulter",
       "exercises": [
-        { "id": "bankdruecken", "name": "Bankdrücken", "sets": 4, "reps": "6–8", "note": "Schulterblätter zusammen, Füße fest am Boden.", "images": [] },
-        { "id": "schraegbank-kh", "name": "Schrägbankdrücken Kurzhantel", "sets": 3, "reps": "8–10", "note": "", "images": [] },
-        { "id": "schulterdruecken", "name": "Schulterdrücken", "sets": 3, "reps": "8–10", "note": "", "images": [] },
-        { "id": "seitheben", "name": "Seitheben", "sets": 3, "reps": "12–15", "note": "", "images": [] },
-        { "id": "trizeps-kabel", "name": "Trizepsdrücken am Kabel", "sets": 3, "reps": "10–12", "note": "", "images": [] }
+        {
+          "id": "trizeps-druecken",
+          "name": "Trizeps drücken",
+          "sets": 3,
+          "reps": "8–12",
+          "note": "",
+          "images": [
+            {
+              "src": "images/push1-trizeps-druecken.gif",
+              "label": "Ausführung"
+            },
+            {
+              "src": "images/push1-griff.jpg",
+              "label": "Griff"
+            }
+          ]
+        },
+        {
+          "id": "ueberkopf-trizeps",
+          "name": "Überkopf Trizeps drücken",
+          "sets": 3,
+          "reps": "8–12",
+          "note": "",
+          "images": [
+            {
+              "src": "images/push2-ueberkopf-trizeps.gif",
+              "label": "Ausführung"
+            }
+          ]
+        },
+        {
+          "id": "butterfly",
+          "name": "Butterfly für Brust",
+          "sets": 3,
+          "reps": "8–12",
+          "note": "",
+          "images": [
+            {
+              "src": "images/push3-butterfly.jpg",
+              "label": "Gerät & Position"
+            }
+          ]
+        },
+        {
+          "id": "brustdruecken",
+          "name": "Brustdrücken",
+          "sets": 3,
+          "reps": "8–12",
+          "note": "",
+          "images": [
+            {
+              "src": "images/push4-brustdruecken.jpg",
+              "label": "Gerät"
+            }
+          ]
+        },
+        {
+          "id": "schraegbankdruecken",
+          "name": "Schrägbankdrücken",
+          "sets": 3,
+          "reps": "8–12",
+          "note": "",
+          "images": [
+            {
+              "src": "images/push5-schraegbankdruecken.gif",
+              "label": "Ausführung"
+            },
+            {
+              "src": "images/push5-einstellung.jpg",
+              "label": "Bankeinstellung"
+            }
+          ]
+        },
+        {
+          "id": "schulterdruecken",
+          "name": "Schulterdrücken",
+          "sets": 3,
+          "reps": "8–12",
+          "note": "",
+          "images": [
+            {
+              "src": "images/push6-schulterdruecken.gif",
+              "label": "Ausführung"
+            },
+            {
+              "src": "images/push6-schulterdruecken.jpg",
+              "label": "Bankeinstellung"
+            }
+          ]
+        }
       ]
     },
     {
@@ -19,11 +104,46 @@
       "name": "PULL",
       "focus": "Rücken · Bizeps · hintere Schulter",
       "exercises": [
-        { "id": "latzug", "name": "Latzug", "sets": 4, "reps": "8–10", "note": "", "images": [] },
-        { "id": "rudern", "name": "Rudern", "sets": 3, "reps": "8–10", "note": "", "images": [] },
-        { "id": "facepulls", "name": "Face Pulls", "sets": 3, "reps": "12–15", "note": "", "images": [] },
-        { "id": "bizeps-liegend-kh", "name": "Bizeps Curls liegend Kurzhantel", "sets": 3, "reps": "10–12", "note": "Bankeinstellung wie im zweiten Bild.", "images": [] },
-        { "id": "hammercurls", "name": "Hammer Curls", "sets": 3, "reps": "10–12", "note": "", "images": [] }
+        {
+          "id": "latzug",
+          "name": "Latzug",
+          "sets": 4,
+          "reps": "8–10",
+          "note": "",
+          "images": []
+        },
+        {
+          "id": "rudern",
+          "name": "Rudern",
+          "sets": 3,
+          "reps": "8–10",
+          "note": "",
+          "images": []
+        },
+        {
+          "id": "facepulls",
+          "name": "Face Pulls",
+          "sets": 3,
+          "reps": "12–15",
+          "note": "",
+          "images": []
+        },
+        {
+          "id": "bizeps-liegend-kh",
+          "name": "Bizeps Curls liegend Kurzhantel",
+          "sets": 3,
+          "reps": "10–12",
+          "note": "Bankeinstellung wie im zweiten Bild.",
+          "images": []
+        },
+        {
+          "id": "hammercurls",
+          "name": "Hammer Curls",
+          "sets": 3,
+          "reps": "10–12",
+          "note": "",
+          "images": []
+        }
       ]
     },
     {
@@ -31,11 +151,46 @@
       "name": "BEINE",
       "focus": "Quads · Beinbeuger · Waden",
       "exercises": [
-        { "id": "kniebeuge", "name": "Kniebeugen", "sets": 4, "reps": "6–8", "note": "", "images": [] },
-        { "id": "beinpresse", "name": "Beinpresse", "sets": 3, "reps": "10–12", "note": "", "images": [] },
-        { "id": "rdl", "name": "Rumänisches Kreuzheben", "sets": 3, "reps": "8–10", "note": "", "images": [] },
-        { "id": "beinstrecker", "name": "Beinstrecker", "sets": 3, "reps": "12–15", "note": "", "images": [] },
-        { "id": "wadenheben", "name": "Wadenheben", "sets": 4, "reps": "12–15", "note": "", "images": [] }
+        {
+          "id": "kniebeuge",
+          "name": "Kniebeugen",
+          "sets": 4,
+          "reps": "6–8",
+          "note": "",
+          "images": []
+        },
+        {
+          "id": "beinpresse",
+          "name": "Beinpresse",
+          "sets": 3,
+          "reps": "10–12",
+          "note": "",
+          "images": []
+        },
+        {
+          "id": "rdl",
+          "name": "Rumänisches Kreuzheben",
+          "sets": 3,
+          "reps": "8–10",
+          "note": "",
+          "images": []
+        },
+        {
+          "id": "beinstrecker",
+          "name": "Beinstrecker",
+          "sets": 3,
+          "reps": "12–15",
+          "note": "",
+          "images": []
+        },
+        {
+          "id": "wadenheben",
+          "name": "Wadenheben",
+          "sets": 4,
+          "reps": "12–15",
+          "note": "",
+          "images": []
+        }
       ]
     }
   ]
