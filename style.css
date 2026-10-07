@@ -110,3 +110,8 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 #lightbox[hidden]{display:none}
 #lightbox img{max-width:100%;max-height:82vh}
 #lb-cap{font-size:20px;text-transform:uppercase;letter-spacing:2px;color:var(--mute)}
+
+.grp{display:flex;align-items:center;gap:12px;margin:22px 0 10px}
+.grp span{font-family:var(--h);font-size:30px;letter-spacing:3px;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.grp::after{content:"";flex:1;height:3px;border-radius:2px;background:var(--grad);opacity:.7}
+.top + .bar + .grp{margin-top:6px}

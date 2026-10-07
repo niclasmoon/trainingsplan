@@ -119,9 +119,19 @@ function renderWorkout() {
     const first = d.exercises.find(e => !cur.done[e.id]);
     openEx = first ? first.id : '';
   }
-  // offene Übungen zuerst, erledigte rutschen nach unten
-  const ordered = [...d.exercises.filter(e => !cur.done[e.id]), ...d.exercises.filter(e => cur.done[e.id])];
-  ordered.forEach(ex => app.append(exCard(d, ex, d.exercises.indexOf(ex) + 1)));
+  // Gruppen (z. B. ARME, BRUST) in Plan-Reihenfolge; innerhalb einer Gruppe rutschen erledigte Übungen nach unten
+  const groups = [];
+  d.exercises.forEach(ex => {
+    const g = ex.group || '';
+    let grp = groups.find(x => x.name === g && x === groups[groups.length - 1]);
+    if (!grp) groups.push(grp = { name: g, list: [] });
+    grp.list.push(ex);
+  });
+  groups.forEach(grp => {
+    if (grp.name) app.append($(`<div class="grp"><span>${esc(grp.name)}</span></div>`));
+    [...grp.list.filter(e => !cur.done[e.id]), ...grp.list.filter(e => cur.done[e.id])]
+      .forEach(ex => app.append(exCard(d, ex, d.exercises.indexOf(ex) + 1)));
+  });
 
   const fin = $('<button class="btn red finish">Training beenden</button>');
   fin.onclick = () => {
@@ -255,4 +265,4 @@ fetch('plan.json?t=' + Date.now(), { cache: 'no-store' })
   .then(p => { plan = p; render(); })
   .catch(() => { app.innerHTML = '<div class="hero"><h1 class="grad-text">OFFLINE</h1><p>Plan konnte nicht geladen werden.</p></div>'; });
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => {});

@@ -22,7 +22,8 @@
               "src": "images/push1-griff.jpg",
               "label": "Griff"
             }
-          ]
+          ],
+          "group": "ARME"
         },
         {
           "id": "ueberkopf-trizeps",
@@ -35,7 +36,8 @@
               "src": "images/push2-ueberkopf-trizeps.gif",
               "label": "Ausführung"
             }
-          ]
+          ],
+          "group": "ARME"
         },
         {
           "id": "butterfly",
@@ -48,7 +50,8 @@
               "src": "images/push3-butterfly.jpg",
               "label": "Gerät & Position"
             }
-          ]
+          ],
+          "group": "BRUST"
         },
         {
           "id": "brustdruecken",
@@ -61,7 +64,8 @@
               "src": "images/push4-brustdruecken.jpg",
               "label": "Gerät"
             }
-          ]
+          ],
+          "group": "BRUST"
         },
         {
           "id": "schraegbankdruecken",
@@ -78,7 +82,8 @@
               "src": "images/push5-einstellung.jpg",
               "label": "Bankeinstellung"
             }
-          ]
+          ],
+          "group": "BRUST"
         },
         {
           "id": "schulterdruecken",
@@ -95,7 +100,8 @@
               "src": "images/push6-schulterdruecken.jpg",
               "label": "Bankeinstellung"
             }
-          ]
+          ],
+          "group": "VORDERE SCHULTER"
         }
       ]
     },
