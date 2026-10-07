@@ -12,7 +12,7 @@
           "name": "Trizeps drücken",
           "sets": 3,
           "reps": "8–12",
-          "note": "",
+          "note": "Nah am Kabel stehen und die Ellenbogen starr am Körper lassen.",
           "images": [
             {
               "src": "images/push1-trizeps-druecken.gif",
@@ -41,8 +41,8 @@
           "id": "butterfly",
           "name": "Butterfly für Brust",
           "sets": 3,
-          "reps": "8–12",
-          "note": "",
+          "reps": "6–12",
+          "note": "Auf dem Sitz mit dem Gesäß weit nach vorn rutschen und die Brust rausstrecken.",
           "images": [
             {
               "src": "images/push3-butterfly.jpg",
@@ -54,8 +54,8 @@
           "id": "brustdruecken",
           "name": "Brustdrücken",
           "sets": 3,
-          "reps": "8–12",
-          "note": "",
+          "reps": "6–12",
+          "note": "Sitz so einstellen, dass die Brustwarzen auf Höhe der Griffe sind.",
           "images": [
             {
               "src": "images/push4-brustdruecken.jpg",
@@ -67,8 +67,8 @@
           "id": "schraegbankdruecken",
           "name": "Schrägbankdrücken",
           "sets": 3,
-          "reps": "8–12",
-          "note": "",
+          "reps": "6–12",
+          "note": "Arme im rechten Winkel und die Stange auf Höhe der Brustwarzen.",
           "images": [
             {
               "src": "images/push5-schraegbankdruecken.gif",
@@ -84,7 +84,7 @@
           "id": "schulterdruecken",
           "name": "Schulterdrücken",
           "sets": 3,
-          "reps": "8–12",
+          "reps": "6–12",
           "note": "",
           "images": [
             {
