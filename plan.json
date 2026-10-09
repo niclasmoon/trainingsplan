@@ -108,47 +108,109 @@
     {
       "id": "pull",
       "name": "PULL",
-      "focus": "Rücken · Bizeps · hintere Schulter",
+      "focus": "Arme · Schulter · Rücken",
       "exercises": [
         {
-          "id": "latzug",
-          "name": "Latzug",
-          "sets": 4,
-          "reps": "8–10",
+          "id": "bizepscurls",
+          "name": "Bizepscurls (Kurzhantel)",
+          "group": "ARME",
+          "sets": 3,
+          "reps": "8–12",
           "note": "",
-          "images": []
+          "images": [
+            {
+              "src": "images/pull1-bizepscurls.gif",
+              "label": "Ausführung"
+            }
+          ]
         },
         {
-          "id": "rudern",
-          "name": "Rudern",
+          "id": "schraegbank-curls",
+          "name": "Schrägbank-Curls (Kurzhantel)",
+          "group": "ARME",
           "sets": 3,
-          "reps": "8–10",
-          "note": "",
-          "images": []
-        },
-        {
-          "id": "facepulls",
-          "name": "Face Pulls",
-          "sets": 3,
-          "reps": "12–15",
-          "note": "",
-          "images": []
-        },
-        {
-          "id": "bizeps-liegend-kh",
-          "name": "Bizeps Curls liegend Kurzhantel",
-          "sets": 3,
-          "reps": "10–12",
-          "note": "Bankeinstellung wie im zweiten Bild.",
-          "images": []
+          "reps": "8–12",
+          "note": "Ellenbogen hinter dem Körper halten. Unten die Arme immer schön entlasten.",
+          "images": [
+            {
+              "src": "images/pull2-schraegbank-curls.gif",
+              "label": "Ausführung"
+            }
+          ]
         },
         {
           "id": "hammercurls",
-          "name": "Hammer Curls",
+          "name": "Hammercurls",
+          "group": "ARME",
           "sets": 3,
-          "reps": "10–12",
+          "reps": "8–12",
           "note": "",
-          "images": []
+          "images": [
+            {
+              "src": "images/pull3-hammercurls.gif",
+              "label": "Ausführung"
+            }
+          ]
+        },
+        {
+          "id": "seitheben-maschine",
+          "name": "Seitheben an der Maschine",
+          "group": "SCHULTER",
+          "sets": 3,
+          "reps": "8–12",
+          "note": "Die Ellenbogen sind die höchste Stelle. Die Handgelenke nie über Ellenbogenhöhe bringen.",
+          "images": [
+            {
+              "src": "images/pull4-seitheben.gif",
+              "label": "Ausführung"
+            }
+          ]
+        },
+        {
+          "id": "reverse-butterfly",
+          "name": "Reverse Butterfly",
+          "group": "SCHULTER",
+          "sets": 3,
+          "reps": "6–12",
+          "note": "Handflächen auf Höhe der Schultern. Den Po etwas rausstrecken.",
+          "images": [
+            {
+              "src": "images/pull5-reverse-butterfly.gif",
+              "label": "Ausführung"
+            }
+          ]
+        },
+        {
+          "id": "latzug",
+          "name": "Latzug",
+          "group": "RÜCKEN",
+          "sets": 4,
+          "reps": "6–12",
+          "note": "Breit greifen.",
+          "images": [
+            {
+              "src": "images/pull6-latzug.gif",
+              "label": "Ausführung"
+            }
+          ]
+        },
+        {
+          "id": "rudern-breit",
+          "name": "Rudern am Kabel (breit)",
+          "group": "RÜCKEN",
+          "sets": 4,
+          "reps": "6–12",
+          "note": "Breit greifen. Die Schulterblätter vorn entlasten und die Bewegung nur durch das Zurückziehen der Schulterblätter einleiten.",
+          "images": [
+            {
+              "src": "images/pull7-rudern.gif",
+              "label": "Ausführung"
+            },
+            {
+              "src": "images/pull7-griff.jpg",
+              "label": "Griff"
+            }
+          ]
         }
       ]
     },
