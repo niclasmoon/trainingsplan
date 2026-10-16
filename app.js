@@ -252,11 +252,84 @@ function openLightbox(src, cap) {
   lb.onclick = () => { lb.hidden = true; };
 }
 
+/* ---------- KALENDER ---------- */
+const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+const WDAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+const pad = (n) => String(n).padStart(2, '0');
+const localKey = (iso) => { const d = new Date(iso); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; };
+const dayColor = (id) => (dayById(id) || {}).color || '#2d7bff';
+
+function renderCal() {
+  const now = new Date();
+  if (view.y === undefined) { view.y = now.getFullYear(); view.m = now.getMonth(); }
+  const { y, m } = view;
+  const byDate = {};
+  state.history.forEach(r => (byDate[localKey(r.date)] = byDate[localKey(r.date)] || []).push(r));
+
+  const first = new Date(y, m, 1);
+  const offset = (first.getDay() + 6) % 7; // Montag zuerst
+  const dim = new Date(y, m + 1, 0).getDate();
+  const todayKey = localKey(now.toISOString());
+  let count = 0;
+  for (let d = 1; d <= dim; d++) count += (byDate[`${y}-${pad(m + 1)}-${pad(d)}`] || []).length;
+
+  app.innerHTML = '';
+  app.append($(`<div class="cal-head">
+    <button class="cal-arrow" data-d="-1">‹</button>
+    <div class="cal-title"><h2 class="grad-text">${MONTHS[m]}</h2><span>${y}</span></div>
+    <button class="cal-arrow" data-d="1">›</button></div>`));
+  app.querySelectorAll('.cal-arrow').forEach(b => b.onclick = () => {
+    const nd = new Date(y, m + (+b.dataset.d), 1);
+    view = { name: 'cal', y: nd.getFullYear(), m: nd.getMonth(), sel: null };
+    render();
+  });
+
+  const grid = $('<div class="cal-grid"></div>');
+  WDAYS.forEach(w => grid.append($(`<div class="cal-wd">${w}</div>`)));
+  for (let i = 0; i < offset; i++) grid.append($('<div class="cal-cell empty"></div>'));
+  for (let d = 1; d <= dim; d++) {
+    const key = `${y}-${pad(m + 1)}-${pad(d)}`;
+    const recs = byDate[key] || [];
+    const tags = recs.map(r => {
+      const dd = dayById(r.day);
+      return `<i style="--c:${dayColor(r.day)}">${esc(dd ? dd.name : r.day)}</i>`;
+    }).join('');
+    const cell = $(`<button class="cal-cell ${recs.length ? 'has' : ''} ${key === todayKey ? 'today' : ''} ${view.sel === key ? 'sel' : ''}"><b>${d}</b>${tags}</button>`);
+    if (recs.length) cell.onclick = () => { view.sel = view.sel === key ? null : key; render(); };
+    grid.append(cell);
+  }
+  app.append(grid);
+
+  const legend = $('<div class="cal-legend"></div>');
+  plan.days.forEach(d => legend.append($(`<span><i style="--c:${d.color || '#2d7bff'}"></i>${esc(d.name)}</span>`)));
+  app.append(legend);
+  app.append($(`<div class="cal-count"><b>${count}</b> ${count === 1 ? 'Training' : 'Trainings'} in diesem Monat</div>`));
+
+  if (view.sel && byDate[view.sel]) {
+    byDate[view.sel].forEach(r => {
+      const dd = dayById(r.day);
+      if (!dd) return;
+      const rows = dd.exercises.filter(e => r.entries[e.id]).map(e => {
+        const sets = r.entries[e.id].sets.map(s => (s.kg !== '' || s.reps !== '') ? `${s.kg !== '' ? s.kg : '–'}×${s.reps !== '' ? s.reps : '–'}` : null).filter(Boolean);
+        return `<div><span>${esc(e.name)}</span><em>${sets.length ? sets.join(' · ') : '✓'}</em></div>`;
+      }).join('');
+      app.append($(`<div class="cal-detail" style="--c:${dayColor(r.day)}"><h3>${esc(dd.name)} · ${fmtDate(r.date)}</h3>${rows || '<div><span>Keine Details gespeichert</span></div>'}</div>`));
+    });
+  }
+}
+
 /* ---------- ROUTER ---------- */
+const nav = document.getElementById('nav');
+nav.querySelectorAll('button').forEach(b => b.onclick = () => go({ name: b.dataset.tab === 'cal' ? 'cal' : 'home' }));
 function go(v) { view = v; render(); window.scrollTo(0, 0); }
 function render() {
+  const showNav = view.name === 'home' || view.name === 'cal';
+  nav.hidden = !showNav;
+  nav.querySelectorAll('button').forEach(b => b.classList.toggle('on', (b.dataset.tab === 'cal') === (view.name === 'cal')));
+  document.body.classList.toggle('has-nav', showNav);
   if (view.name === 'workout' && state.current) renderWorkout();
   else if (view.name === 'win') renderWin();
+  else if (view.name === 'cal') renderCal();
   else renderHome();
 }
 

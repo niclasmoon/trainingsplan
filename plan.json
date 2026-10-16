@@ -103,7 +103,8 @@
           ],
           "group": "VORDERE SCHULTER"
         }
-      ]
+      ],
+      "color": "#2d7bff"
     },
     {
       "id": "pull",
@@ -212,54 +213,100 @@
             }
           ]
         }
-      ]
+      ],
+      "color": "#ff2740"
     },
     {
       "id": "beine",
       "name": "BEINE",
-      "focus": "Quads · Beinbeuger · Waden",
+      "focus": "Quadrizeps · Beinbeuger · Waden · Bauch",
       "exercises": [
-        {
-          "id": "kniebeuge",
-          "name": "Kniebeugen",
-          "sets": 4,
-          "reps": "6–8",
-          "note": "",
-          "images": []
-        },
-        {
-          "id": "beinpresse",
-          "name": "Beinpresse",
-          "sets": 3,
-          "reps": "10–12",
-          "note": "",
-          "images": []
-        },
-        {
-          "id": "rdl",
-          "name": "Rumänisches Kreuzheben",
-          "sets": 3,
-          "reps": "8–10",
-          "note": "",
-          "images": []
-        },
         {
           "id": "beinstrecker",
           "name": "Beinstrecker",
+          "group": "QUADRIZEPS",
           "sets": 3,
-          "reps": "12–15",
+          "reps": "6–12",
           "note": "",
-          "images": []
+          "images": [
+            {
+              "src": "images/beine1.jpg",
+              "label": "Gerät"
+            }
+          ]
+        },
+        {
+          "id": "hackenschmidt",
+          "name": "Hackenschmidt (Hack Squat)",
+          "group": "QUADRIZEPS",
+          "sets": 3,
+          "reps": "6–12",
+          "note": "",
+          "images": [
+            {
+              "src": "images/beine2.jpg",
+              "label": "Gerät"
+            }
+          ]
+        },
+        {
+          "id": "beinbeuger",
+          "name": "Beinbeuger sitzend",
+          "group": "BEINBEUGER",
+          "sets": 4,
+          "reps": "6–12",
+          "note": "",
+          "images": [
+            {
+              "src": "images/beine3.jpg",
+              "label": "Gerät"
+            }
+          ]
+        },
+        {
+          "id": "abduktoren-adduktoren",
+          "name": "Abduktoren / Adduktoren",
+          "group": "HÜFTE & INNENSEITE",
+          "sets": 3,
+          "reps": "6–12",
+          "note": "",
+          "images": [
+            {
+              "src": "images/beine4.jpg",
+              "label": "Gerät"
+            }
+          ]
         },
         {
           "id": "wadenheben",
           "name": "Wadenheben",
-          "sets": 4,
-          "reps": "12–15",
+          "group": "WADEN",
+          "sets": 3,
+          "reps": "8–12",
           "note": "",
-          "images": []
+          "images": [
+            {
+              "src": "images/beine5.jpg",
+              "label": "Gerät"
+            }
+          ]
+        },
+        {
+          "id": "bauchmaschine",
+          "name": "Bauchmaschine",
+          "group": "BAUCH",
+          "sets": 3,
+          "reps": "6–12",
+          "note": "",
+          "images": [
+            {
+              "src": "images/beine6.jpg",
+              "label": "Gerät"
+            }
+          ]
         }
-      ]
+      ],
+      "color": "#a64dff"
     }
   ]
 }
