@@ -156,3 +156,29 @@ body.has-nav #app{padding-bottom:120px}
 .cal-detail em{font-style:normal;color:var(--blue2);text-align:right}
 
 .day .meta>span:last-child{white-space:nowrap;flex:none;margin-left:10px}
+
+/* TROPHÄE */
+.win{position:relative;text-align:center;padding-top:10px}
+.win .flash{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 28%,rgba(255,220,90,.85),rgba(255,220,90,0) 60%);animation:flash 1.2s ease-out forwards}
+@keyframes flash{0%{opacity:0}12%{opacity:1}100%{opacity:0}}
+.win>*{position:relative;z-index:1}
+.win .confetti{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.confetti u{position:absolute;top:-16px;width:9px;height:15px;border-radius:2px;opacity:0;animation:fall linear forwards}
+@keyframes fall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(105vh) rotate(720deg);opacity:.9}}
+.trophy{width:200px;margin:6px auto 0;animation:pop .9s cubic-bezier(.2,1.5,.4,1) both,glow 2.2s ease-in-out .9s infinite}
+.trophy-svg{width:100%;display:block;overflow:hidden}
+@keyframes pop{0%{transform:scale(.2) rotate(-12deg);opacity:0}60%{opacity:1}100%{transform:scale(1) rotate(0)}}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 14px rgba(255,200,0,.55))}50%{filter:drop-shadow(0 0 34px rgba(255,200,0,1))}}
+.trophy .shine{animation:shine 2.4s ease-in-out 1s infinite}
+@keyframes shine{0%{transform:translateX(0) skewX(-20deg)}60%,100%{transform:translateX(330px) skewX(-20deg)}}
+.tnr{font-family:var(--h);font-size:26px;letter-spacing:8px;color:var(--mute);margin-top:6px}
+.tcount{font-family:var(--h);font-size:150px;line-height:1;filter:drop-shadow(0 0 24px rgba(255,200,0,.35));background:linear-gradient(120deg,#fff3a0,#ffc800 50%,#ff7a2a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.miles{display:inline-block;margin-top:4px;padding:6px 18px;border-radius:999px;font-family:var(--h);font-size:22px;letter-spacing:4px;background:var(--grad);animation:pulse 1.4s infinite}
+.win p{margin:14px 0 22px}
+
+/* STATISTIK */
+.stats{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:8px;margin:16px 0 12px}
+.stat{border-radius:14px;border:2px solid var(--c,var(--line));background:var(--card);text-align:center;padding:10px 4px 8px;box-shadow:0 0 16px color-mix(in srgb,var(--c,transparent) 28%,transparent)}
+.stat b{display:block;font-family:var(--h);font-weight:400;font-size:42px;line-height:1;color:var(--text)}
+.stat span{font-family:var(--h);font-size:15px;letter-spacing:2px;color:var(--c,var(--mute));text-transform:uppercase}
+.stat.total{--c:#ffc800}

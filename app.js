@@ -229,18 +229,64 @@ function finish(d) {
   go({ name: 'win', rec });
 }
 
+const TROPHY_SVG = `<svg viewBox="0 0 200 215" class="trophy-svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff6b0"/><stop offset=".45" stop-color="#ffc800"/><stop offset="1" stop-color="#b86e00"/>
+    </linearGradient>
+    <linearGradient id="goldDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd84a"/><stop offset="1" stop-color="#9a5a00"/>
+    </linearGradient>
+    <clipPath id="tclip">
+      <path d="M55 24 H145 V92 C145 124 125 142 100 147 C75 142 55 124 55 92 Z"/>
+      <rect x="91" y="146" width="18" height="30"/>
+      <path d="M68 176 H132 L140 194 H60 Z"/>
+      <rect x="52" y="194" width="96" height="16" rx="4"/>
+    </clipPath>
+  </defs>
+  <path d="M62 52 H40 C34 52 31 55 31 60 C31 84 46 98 66 102" fill="none" stroke="url(#goldDark)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M138 52 H160 C166 52 169 55 169 60 C169 84 154 98 134 102" fill="none" stroke="url(#goldDark)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M55 24 H145 V92 C145 124 125 142 100 147 C75 142 55 124 55 92 Z" fill="url(#gold)"/>
+  <path d="M68 32 H82 V92 C82 118 90 130 100 140 C80 134 68 118 68 92 Z" fill="#fff" opacity=".28"/>
+  <polygon points="100,52 106,70 125,70 110,81 116,99 100,88 84,99 90,81 75,70 94,70" fill="#fff4b8" opacity=".95"/>
+  <rect x="91" y="146" width="18" height="30" fill="url(#goldDark)"/>
+  <path d="M68 176 H132 L140 194 H60 Z" fill="url(#gold)"/>
+  <rect x="52" y="194" width="96" height="16" rx="4" fill="url(#goldDark)"/>
+  <g clip-path="url(#tclip)"><rect class="shine" x="-60" y="0" width="26" height="215" fill="#fff" opacity=".5" transform="skewX(-20)"/></g>
+</svg>`;
+
 function renderWin() {
   const rec = view.rec;
   const d = dayById(rec.day);
+  const total = state.history.length;
   const rows = d.exercises.filter(e => rec.entries[e.id]).map(e => {
     const s = rec.entries[e.id].sets.filter(x => x.kg !== '' || x.reps !== '');
     return `<div>${esc(e.name)}<span>${s.length ? s.length + ' Sätze' : 'erledigt'}</span></div>`;
   }).join('');
+  const confetti = Array.from({ length: 26 }, (_, i) => {
+    const c = ['#2d7bff', '#ff2740', '#ffc800', '#00b4ff', '#fff'][i % 5];
+    return `<u style="left:${(i * 37) % 100}%;background:${c};animation-delay:${(i % 9) * 0.12}s;animation-duration:${2.2 + (i % 5) * 0.35}s"></u>`;
+  }).join('');
+  const milestone = total % 10 === 0 ? '<div class="miles">MEILENSTEIN!</div>' : '';
   app.innerHTML = '';
-  const w = $(`<div class="win"><h1 class="grad-text">${esc(d.name)}<br>GEKNACKT.</h1><p>Training gespeichert · Stark!</p>
+  const w = $(`<div class="win">
+    <div class="flash"></div><div class="confetti">${confetti}</div>
+    <div class="trophy">${TROPHY_SVG}</div>
+    <div class="tnr">TRAINING NR.</div>
+    <div class="tcount grad-text" id="tcount">0</div>
+    ${milestone}
+    <p>${esc(d.name)} geknackt · Stark!</p>
     <div class="sum">${rows}</div><button class="btn">Zur Startseite</button></div>`);
   w.querySelector('.btn').onclick = () => go({ name: 'home' });
   app.append(w);
+  // Zähler hochzählen
+  const el = w.querySelector('#tcount');
+  const t0 = performance.now(), dur = Math.min(1400, 400 + total * 25);
+  (function tick(t) {
+    const k = Math.min(1, (t - t0) / dur);
+    el.textContent = Math.round(total * (1 - Math.pow(1 - k, 3)));
+    if (k < 1) requestAnimationFrame(tick);
+  })(t0);
 }
 
 /* ---------- LIGHTBOX ---------- */
@@ -303,6 +349,10 @@ function renderCal() {
   const legend = $('<div class="cal-legend"></div>');
   plan.days.forEach(d => legend.append($(`<span><i style="--c:${d.color || '#2d7bff'}"></i>${esc(d.name)}</span>`)));
   app.append(legend);
+  const per = {};
+  state.history.forEach(r => per[r.day] = (per[r.day] || 0) + 1);
+  const tiles = plan.days.map(dd => `<div class="stat" style="--c:${dd.color || '#2d7bff'}"><b>${per[dd.id] || 0}</b><span>${esc(dd.name)}</span></div>`).join('');
+  app.append($(`<div class="stats"><div class="stat total"><b>${state.history.length}</b><span>Gesamt</span></div>${tiles}</div>`));
   app.append($(`<div class="cal-count"><b>${count}</b> ${count === 1 ? 'Training' : 'Trainings'} in diesem Monat</div>`));
 
   if (view.sel && byDate[view.sel]) {
